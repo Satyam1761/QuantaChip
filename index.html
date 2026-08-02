@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-store">
+    <title>QuantaChip</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="input-panel" aria-label="Natural language chip designer">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">Q</span>
+          <div>
+            <h1>QuantaChip</h1>
+            <p>AI assisted superconducting chip design with Qiskit Metal</p>
+          </div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="chat-header">
+            <h2>Describe Your Chip</h2>
+            <span id="statusPill">Ready</span>
+          </div>
+          <div id="chatLog" class="chat-log" aria-live="polite"></div>
+          <form id="chatForm" class="chat-form">
+            <textarea id="promptInput" rows="6" placeholder="Example: Design a 6 qubit superconducting transmon chip in heavy-hex topology with meandered readout resonators, launchpads, and low crosstalk."></textarea>
+            <button type="submit">Create Design</button>
+          </form>
+        </div>
+
+        <div class="reference-note">
+          <strong>Qiskit Metal flow</strong>
+          <span>DesignPlanar, TransmonPocket, LaunchpadWirebond, RouteMeander, CPW readout bus, and GDS-ready layout planning.</span>
+        </div>
+      </section>
+
+      <section class="design-panel" aria-label="Generated quantum chip design">
+        <header class="design-header">
+          <div>
+            <h2>Generated Design</h2>
+            <p id="designSubtitle">Superconducting chip layout generated from your natural-language request - layout renderer v4Q</p>
+          </div>
+          <div class="metric-strip">
+            <span id="metricQubits">4 qubits</span>
+            <span id="metricCouplers">4 couplers</span>
+            <span id="metricArea">16 mm2</span>
+          </div>
+        </header>
+
+        <div class="canvas-grid">
+          <section class="chip-pane fabricated-pane">
+            <h3>Fabricated Preview</h3>
+            <canvas id="fabricatedCanvas" width="920" height="520" aria-label="Fabricated superconducting quantum chip preview"></canvas>
+          </section>
+          <section class="chip-pane schematic-pane">
+            <h3>Qiskit Metal 4Q Reference Schematic</h3>
+            <canvas id="schematicCanvas" width="920" height="520" aria-label="Qiskit Metal superconducting chip schematic"></canvas>
+          </section>
+        </div>
+
+        <section id="emptyState" class="empty-state">
+          <h2>Awaiting Design Request</h2>
+          <p>Describe the superconducting quantum chip in the chatbot. The generated layout will appear here.</p>
+        </section>
+
+        <section class="summary-section">
+          <div id="summaryPanel" class="summary-panel"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="src/app.js?v=20260525-generate-after-chat"></script>
+  </body>
+</html>
